@@ -14,9 +14,10 @@ class PuResultController extends Controller
      */
     public function index()
     {
-        $puresult = AnnouncedPuResult::all();
+        $pollingunits = AnnouncedPuResult::all();
 
-        return response()->json($puresult);
+
+        return view('pollingunits.index', compact('pollingunits'));
     }
 
     /**

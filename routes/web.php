@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('main');
+    return view('layouts.main');
 });
 
 Route::resource('/ward', WardController::class);
@@ -32,7 +32,7 @@ Route::resource('/lga', LgaController::class);
 Route::resource('/party', PartyController::class);
 Route::resource('/agent', AgentController::class);
 Route::resource('/lga/result', LgaResultController::class);
-Route::resource('/pu/result', PuResultController::class);
+Route::resource('pollingunits', PuResultController::class);
 Route::resource('/state/result', StateResultController::class);
 Route::resource('/ward/result', WardResultController::class);
 

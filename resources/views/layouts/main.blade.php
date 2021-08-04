@@ -34,7 +34,7 @@
             <li class="nav-item active">
                 <a class="nav-link" href="index.html ">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Test</span></a>
             </li>
 
             <!-- Divider -->
@@ -43,7 +43,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="/employees">
                     <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
-                    <span>Employee Management</span></a>
+                    <span>Bincom Test</span></a>
             </li>
 
             <!-- Divider -->
@@ -54,14 +54,11 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSystem"
                     aria-expanded="true" aria-controls="collapseSystem">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>System Management</span>
+                    <span>Individual Polling Unit</span>
                 </a>
                 <div id="collapseSystem" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('countries.index') }}">Country</a>
-                        <a class="collapse-item" href="{{ route('states.index') }}">State</a>
-                        <a class="collapse-item" href="{{ route('cities.index') }}">City</a>
-                        <a class="collapse-item" href="{{ route('departments.index') }}">Department</a>
+                    <a class="collapse-item" href="{{ route('pollingunits.index') }}">Country</a>
                     </div>
                 </div>
             </li>
@@ -73,11 +70,27 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
                     aria-expanded="true" aria-controls="collapseUser">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>User Management</span>
+                    <span>Total Polling Units</span>
                 </a>
                 <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="{{ route('users.index') }}">User</a>
+                        <a class="collapse-item" href="buttons.html">Role</a>
+                        <a class="collapse-item" href="buttons.html">Permission</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
+                    aria-expanded="true" aria-controls="collapseUser">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>New Parties Unit</span>
+                </a>
+                <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="buttons.html">Role</a>
                         <a class="collapse-item" href="buttons.html">Permission</a>
                     </div>
@@ -113,23 +126,12 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->username }}</span>
+
                                 <!-- <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg"> -->
                             </a>
                             <!-- Dropdown - User Information -->
-                                <div class="dropdown-menu dropdown-menu-right shodow animated--grow-in "
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                            </div>
+                                <div class="dropdown-menu dropdown-menu-right shodow animated--grow-in ">
                         </li>
 
                     </ul>
