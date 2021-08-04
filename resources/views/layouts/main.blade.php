@@ -19,6 +19,9 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin.min.css') }}" rel="stylesheet">
+    @production
+    <link rel="stylesheet" href="{{ secure_asset('css/sb-admin.min.css') }}">
+@endproduction
 
 </head>
 
