@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\PollingUnit;
 
-use App\Models\AnnouncedPuResult;
 use Illuminate\Http\Request;
 
-class PuResultController extends Controller
+class PollingunitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,7 @@ class PuResultController extends Controller
      */
     public function index()
     {
-        $pollingunitresults = AnnouncedPuResult::all();
-
-
-        return view('pollingunitresults.index', compact('pollingunitresults'));
+        //
     }
 
     /**
@@ -27,7 +24,7 @@ class PuResultController extends Controller
      */
     public function create()
     {
-        return view('pollingunits.create');
+        //
     }
 
     /**
@@ -38,16 +35,21 @@ class PuResultController extends Controller
      */
     public function store(Request $request)
     {
-        AnnouncedPuResult::create([
-            'result_id' => $request->result_id,
-            'polling_unit_uniqueid' => $request->polling_unit_uniqueid,
-            'party_abbreviation' => $request->party_abbreviation,
-            'party_score' => $request->party_score,
-            'entered_by_user' => $request->entered_by_user,
+       PollingUnit::cretae([
+            'uniqueid' => $request->uniqueid,
+            'polling_unit_id' => $request->polling_unit_id,
+            'ward_id' => $request->ward_id,
+            'lga_id' => $request->lga_id,
+            'uniquewardid' => $request->uniquewardid,
+            'polling_unit_number' => $request->polling_unit_number,
             'polling_unit_name' => $request->polling_unit_name,
             'polling_unit_description' =>$request->description,
+            'lat' => $request->lat,
+            'long' => $request->long,
+            'entered_by_user' => $request->entered_by_user
 
        ]);
+
     }
 
     /**

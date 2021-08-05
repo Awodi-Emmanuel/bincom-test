@@ -61,7 +61,7 @@
                 </a>
                 <div id="collapseSystem" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ route('pollingunits.index') }}">Country</a>
+                    <a class="collapse-item" href="{{ route('pollingunitresults.index') }}">Polling unit</a>
                     </div>
                 </div>
             </li>

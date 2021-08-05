@@ -8,6 +8,7 @@ use App\Http\Controllers\PuResultController;
 use App\Http\Controllers\StateResultController;
 use App\Http\Controllers\WardResultController;
 use App\Http\Controllers\LgaController;
+use App\Http\Controllers\PollingunitController;
 use App\Http\Controllers\PartyController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,7 +33,8 @@ Route::resource('/lga', LgaController::class);
 Route::resource('/party', PartyController::class);
 Route::resource('/agent', AgentController::class);
 Route::resource('/lga/result', LgaResultController::class);
-Route::resource('pollingunits', PuResultController::class);
+Route::resource('pollingunitresults', PuResultController::class);
+Route::resource('pollingunit', PollingunitController::class);
 Route::resource('/state/result', StateResultController::class);
 Route::resource('/ward/result', WardResultController::class);
 

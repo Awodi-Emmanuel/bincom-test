@@ -14,7 +14,7 @@
         <div class="card-header">
           <div class="row">
             <div class="col">
-              <form method="GET" action="{{ route('pollingunits.index') }}">
+              <form method="GET" action="{{ ('pollingunits.index') }}">
                 <div class="form-row align-items-center">
                   <div class="col">
                     <input type="search" name="search" class="form-control mb-2" id="inlineFormInput" placeholder="John Doe">
@@ -43,9 +43,11 @@
     </tr>
   </thead>
   <tbody>
-    @foreach ($pollingunits as $pollingunit)
+    @foreach ($pollingunitresults as $pollingunitresult)
     <tr>
-      <th scope="row">{{ $pollingunit->polling_unit_id }}</th>
+      <th scope="row">{{ $pollingunitresult->polling_unit_id }}</th>
+
+
     </td>
     </tr>
     @endforeach
