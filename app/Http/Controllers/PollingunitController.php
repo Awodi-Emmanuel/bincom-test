@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\PollingUnit;
 
+use App\Models\PollingUnit;
 use Illuminate\Http\Request;
 
 class PollingunitController extends Controller
@@ -14,7 +14,8 @@ class PollingunitController extends Controller
      */
     public function index()
     {
-        //
+        $pollingunitresults = PollingUnit::all();
+        var_dump($pollingunitresults);
     }
 
     /**
@@ -35,7 +36,7 @@ class PollingunitController extends Controller
      */
     public function store(Request $request)
     {
-       PollingUnit::cretae([
+        PollingUnit::cretae([
             'uniqueid' => $request->uniqueid,
             'polling_unit_id' => $request->polling_unit_id,
             'ward_id' => $request->ward_id,
@@ -43,13 +44,12 @@ class PollingunitController extends Controller
             'uniquewardid' => $request->uniquewardid,
             'polling_unit_number' => $request->polling_unit_number,
             'polling_unit_name' => $request->polling_unit_name,
-            'polling_unit_description' =>$request->description,
+            'polling_unit_description' => $request->description,
             'lat' => $request->lat,
             'long' => $request->long,
-            'entered_by_user' => $request->entered_by_user
+            'entered_by_user' => $request->entered_by_user,
 
-       ]);
-
+        ]);
     }
 
     /**
@@ -60,7 +60,15 @@ class PollingunitController extends Controller
      */
     public function show($id)
     {
-        //
+        $pollingUnits = PollingUnit::where('lga_id', $id)->get();
+
+        foreach ($pollingUnits as $i) {
+            var_dump($i['uniqueid']);
+        }
+
+        // PuResultController::
+
+        return response()->json($pollingUnits);
     }
 
     /**

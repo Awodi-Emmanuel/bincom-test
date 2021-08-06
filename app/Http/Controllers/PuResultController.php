@@ -16,8 +16,8 @@ class PuResultController extends Controller
     {
         $pollingunitresults = AnnouncedPuResult::all();
 
-
-        return view('pollingunitresults.index', compact('pollingunitresults'));
+        // return view('pollingunitresults.index', compact('pollingunitresults'));
+        return true;
     }
 
     /**
@@ -45,9 +45,9 @@ class PuResultController extends Controller
             'party_score' => $request->party_score,
             'entered_by_user' => $request->entered_by_user,
             'polling_unit_name' => $request->polling_unit_name,
-            'polling_unit_description' =>$request->description,
+            'polling_unit_description' => $request->description,
 
-       ]);
+        ]);
     }
 
     /**
@@ -56,9 +56,10 @@ class PuResultController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($uniqueId)
     {
-        //
+        $announcedPuResult = AnnouncedPuResult::Where('polling_unit_uniqueid', $uniqueId)->get();
+        return response()->json($announcedPuResult);
     }
 
     /**
