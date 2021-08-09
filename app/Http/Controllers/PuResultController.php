@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AnnouncedPuResult;
+use App\Http\Requests\PuResultStoreRequest;
 use Illuminate\Http\Request;
 
 class PuResultController extends Controller
@@ -14,11 +15,11 @@ class PuResultController extends Controller
      */
     public function index()
     {
-        $pollingunitresults = AnnouncedPuResult::all();
+        $announcedpuresults = AnnouncedPuResult::all();
 
-        // return view('pollingunitresults.index', compact('pollingunitresults'));
-        return true;
+        return view('announcedpuresults.index', compact('announcedpuresults'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,18 +37,11 @@ class PuResultController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PuResultStoreRequest $request)
     {
-        AnnouncedPuResult::create([
-            'result_id' => $request->result_id,
-            'polling_unit_uniqueid' => $request->polling_unit_uniqueid,
-            'party_abbreviation' => $request->party_abbreviation,
-            'party_score' => $request->party_score,
-            'entered_by_user' => $request->entered_by_user,
-            'polling_unit_name' => $request->polling_unit_name,
-            'polling_unit_description' => $request->description,
+       $announcedpuresults = AnnouncedPuResult::create($request->validated());
 
-        ]);
+        return redirect()->route('announcedpuresults.create')->with('message', 'Polling Unit Created Successfully');
     }
 
     /**
@@ -58,8 +52,8 @@ class PuResultController extends Controller
      */
     public function show($uniqueId)
     {
-        $announcedPuResult = AnnouncedPuResult::Where('polling_unit_uniqueid', $uniqueId)->get();
-        return response()->json($announcedPuResult);
+        $announcedpuresults = AnnouncedPuResult::Where('polling_unit_uniqueid', $uniqueId)->get();
+        return view('announcedpuresults.index', compact('announcedpuresults'));
     }
 
     /**

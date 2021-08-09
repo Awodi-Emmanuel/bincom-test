@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PollingUnit;
+use App\Http\Requests\StoreResultRequest;
 use Illuminate\Http\Request;
 
 class PollingunitController extends Controller
@@ -14,8 +15,9 @@ class PollingunitController extends Controller
      */
     public function index()
     {
-        $pollingunitresults = PollingUnit::all();
-        var_dump($pollingunitresults);
+        $Allpollinguints = PollingUnit::all();
+
+        return response()->json($Allpollinguints);
     }
 
     /**
@@ -34,22 +36,11 @@ class PollingunitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreResultRequest $request)
     {
-        PollingUnit::cretae([
-            'uniqueid' => $request->uniqueid,
-            'polling_unit_id' => $request->polling_unit_id,
-            'ward_id' => $request->ward_id,
-            'lga_id' => $request->lga_id,
-            'uniquewardid' => $request->uniquewardid,
-            'polling_unit_number' => $request->polling_unit_number,
-            'polling_unit_name' => $request->polling_unit_name,
-            'polling_unit_description' => $request->description,
-            'lat' => $request->lat,
-            'long' => $request->long,
-            'entered_by_user' => $request->entered_by_user,
+        $pollingunits = PollingUnit::cretae($request->validated());
 
-        ]);
+            return view('pollingunits.create', compact('pollingunits'));
     }
 
     /**

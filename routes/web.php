@@ -33,10 +33,23 @@ Route::resource('/lga', LgaController::class);
 Route::resource('/party', PartyController::class);
 Route::resource('/agent', AgentController::class);
 Route::resource('/lga/result', LgaResultController::class);
-Route::get('pollingunitresults/{id}', [PuResultController::class, 'show']);
-Route::resource('pollingunit', PollingunitController::class);
+
+// Party Result Route for  and retreving
+
+Route::get('announcedpuresults/{id}', [PuResultController::class, 'show']);
+Route::post('announcedpuresults', [PuResultController::class, 'store']);
+Route::resource('announcedpuresults', PuResultController::class);
+
+// storing Result to polling unit
+
+Route::resource('pollingunits', PollingunitController::class);
+Route::post('pollingunits', [PollingunitController::class, 'store']);
+
 Route::get('pollingunit/{id}', [PollingunitController::class, 'show']);
+
 Route::resource('/state/result', StateResultController::class);
+Route::resource('/state/{state_id}', StateResultController::class);
+
 Route::resource('/ward/result', WardResultController::class);
 
 Route::get('/ward', [WardController::class, 'index']);

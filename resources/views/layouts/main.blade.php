@@ -44,7 +44,7 @@
             <hr class="sidebar-divider">
 
             <li class="nav-item">
-                <a class="nav-link" href="/employees">
+                <a class="nav-link" href="#">
                     <!-- <i class="fas fa-fw fa-tachometer-alt"></i> -->
                     <span>Bincom Test</span></a>
             </li>
@@ -54,50 +54,33 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSystem"
+                <a class="nav-link collapsed" href="{{ route('announcedpuresults.index') }}" data-toggle="collapse" data-target="#collapseSystem"
                     aria-expanded="true" aria-controls="collapseSystem">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Individual Polling Unit</span>
                 </a>
-                <div id="collapseSystem" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{ route('pollingunitresults.index') }}">Polling unit</a>
-                    </div>
-                </div>
             </li>
 
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
+                <a class="nav-link collapsed" href="{{ route('pollingunits.index') }}" data-toggle="collapse" data-target="#collapseUser"
                     aria-expanded="true" aria-controls="collapseUser">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Total Polling Units</span>
+                    <span>New polling Unit</span>
                 </a>
-                <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="buttons.html">Role</a>
-                        <a class="collapse-item" href="buttons.html">Permission</a>
-                    </div>
-                </div>
             </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUser"
+                <a class="nav-link collapsed" href="{{ route('announcedpuresults.create') }}" data-toggle="collapse" data-target="#collapseUser"
                     aria-expanded="true" aria-controls="collapseUser">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>New Parties Unit</span>
+                    <span>Store Results</span>
                 </a>
-                <div id="collapseUser" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="buttons.html">Role</a>
-                        <a class="collapse-item" href="buttons.html">Permission</a>
-                    </div>
-                </div>
             </li>
 
             <!-- Divider -->
@@ -145,8 +128,6 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                         @yield('content')
-
-
                 </div>
                 <!-- /.container-fluid -->
 
