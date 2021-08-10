@@ -48,7 +48,9 @@ class LgaResultController extends Controller
      */
     public function show($id)
     {
-        //
+        $result_count = AnnouncedLgaResult::where('result_id', $id)->sum('lga_score');
+        
+        var_dump($result_count);
     }
 
     /**

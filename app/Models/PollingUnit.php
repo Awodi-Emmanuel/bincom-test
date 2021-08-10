@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class PollingUnit extends Model
 {
     use HasFactory;
+    public $timestamps = false;
+
 
     protected $fillable = [
         'uniqueid',

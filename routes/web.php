@@ -6,10 +6,8 @@ use App\Http\Controllers\LgaResultController;
 use App\Http\Controllers\PartyController;
 use App\Http\Controllers\PollingunitController;
 use App\Http\Controllers\PuResultController;
-use App\Http\Controllers\StateController;
 use App\Http\Controllers\StateResultController;
 use App\Http\Controllers\WardController;
-use App\Http\Controllers\WardResultController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,31 +25,32 @@ Route::get('/', function () {
     return view('layouts.main');
 });
 
-Route::resource('/ward', WardController::class);
-Route::resource('/states', StateController::class);
+// LGA Routes
+Route::get('state/lga/ward/{id}', [LgaController::class, 'getWardByLGAId']);
+Route::get('state/lga/{id}', [LgaController::class, 'getLGAByStateId']);
+Route::get('lga/{id}', [LgaController::class, 'getLgaById']);
 Route::resource('/lga', LgaController::class);
+
+// Polling Unit Routes
+Route::get('pollingunit/lga/{id}', [PollingunitController::class, 'getPUByLGAId']);
+Route::get('pollingunit/result/{id}', [PollingunitController::class, 'AllPUResultsByLGAID']);
+Route::post('pollingunits', [PollingunitController::class, 'store']);
+Route::get('pollingunits/{id}', [PollingunitController::class, 'show']);
+Route::resource('pollingunits', PollingunitController::class);
+
 Route::resource('/party', PartyController::class);
 Route::resource('/agent', AgentController::class);
 Route::resource('/lga/result', LgaResultController::class);
 
 // Party Result Route for  and retreving
-
 Route::get('announcedpuresults/{id}', [PuResultController::class, 'show']);
-Route::post('announcedpuresults', [PuResultController::class, 'store']);
+Route::post('newPollingunit', [PuResultController::class, 'create']);
 Route::resource('announcedpuresults', PuResultController::class);
 
-// storing Result to polling unit
+// State Routes
+Route::resource('/state', StateResultController::class);
 
-Route::resource('pollingunits', PollingunitController::class);
-Route::post('pollingunits', [PollingunitController::class, 'store']);
-
-Route::get('pollingunit/{id}', [PollingunitController::class, 'show']);
-
-Route::resource('/state/result', StateResultController::class);
-Route::resource('/state/{state_id}', StateResultController::class);
-
-Route::resource('/ward/result', WardResultController::class);
-
+// Ward Routes
 Route::get('/ward', [WardController::class, 'index']);
 
 Auth::routes();

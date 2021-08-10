@@ -18,4 +18,9 @@ class AnnouncedStateResult extends Model
         'date_entered',
         'user_ip_address'
     ];
+
+    public function wards()
+    {
+        return $this->hasMany(Ward::class);
+    }
 }

@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Lga;
-use Illuminate\Http\Request;
+use App\Models\Wards as WM;
 
 class LgaController extends Controller
 {
@@ -19,27 +20,6 @@ class LgaController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  int  $id
@@ -47,40 +27,44 @@ class LgaController extends Controller
      */
     public function show($id)
     {
-        //
+        $lga = Lga::where('lga_id', $id);
+
+        return response()->json($lga);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * getLgaById
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  mixed $id
+     * @return void
      */
-    public function edit($id)
+    public static function getLgaById($id)
     {
-        //
+        $lga = Lga::where('lga_id', $id)->get();
+        return response()->json($lga);
     }
 
     /**
-     * Update the specified resource in storage.
+     * getWardByLGAId
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  mixed $lga_id
+     * @return void
      */
-    public function update(Request $request, $id)
+    public static function getWardByLGAId($lga_id)
     {
-        //
+
+        $wards = WM::where('lga_id', $lga_id)->get();
+        return response()->json($wards);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * getLGAByStateId
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function destroy($id)
+    public static function getLGAByStateId($state_id)
     {
-        //
+        $lgas = Lga::where('state_id', $state_id)->get();
+        return response()->json($lgas);
     }
 }
