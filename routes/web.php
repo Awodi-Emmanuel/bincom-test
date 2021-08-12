@@ -26,14 +26,15 @@ Route::get('/', function () {
 });
 
 // LGA Routes
-Route::get('state/lga/ward/{id}', [LgaController::class, 'getWardByLGAId']);
-Route::get('state/lga/{id}', [LgaController::class, 'getLGAByStateId']);
+Route::get('states/lga/ward/{id}', [LgaController::class, 'getWardByLGAId']);
+Route::get('states/lga/{id}', [LgaController::class, 'getLGAByStateId']);
 Route::get('lga/{id}', [LgaController::class, 'getLgaById']);
 Route::resource('/lga', LgaController::class);
 
 // Polling Unit Routes
-Route::get('pollingunit/lga/{id}', [PollingunitController::class, 'getPUByLGAId']);
-Route::get('pollingunit/result/{id}', [PollingunitController::class, 'AllPUResultsByLGAID']);
+Route::get('pollingunits/lga/{id}', [PollingunitController::class, 'getPUByLGAId']);
+Route::get('pollingunits/result/{id}', [PollingunitController::class, 'AllPUResultsByLGAID'])->name('pollingunits');
+
 Route::post('pollingunits', [PollingunitController::class, 'store']);
 Route::get('pollingunits/{id}', [PollingunitController::class, 'show']);
 Route::resource('pollingunits', PollingunitController::class);
@@ -43,8 +44,9 @@ Route::resource('/agent', AgentController::class);
 Route::resource('/lga/result', LgaResultController::class);
 
 // Party Result Route for  and retreving
+Route::resource('newpollingunits', PuResultController::class);
+Route::get('newpollingunits', [PuResultController::class, 'store']);
 Route::get('announcedpuresults/{id}', [PuResultController::class, 'show']);
-Route::post('newPollingunit', [PuResultController::class, 'create']);
 Route::resource('announcedpuresults', PuResultController::class);
 
 // State Routes

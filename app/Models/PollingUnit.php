@@ -10,7 +10,7 @@ class PollingUnit extends Model
     use HasFactory;
     public $timestamps = false;
 
-
+protected $guarded  = ['id'];
     protected $fillable = [
         'uniqueid',
         'polling_unit_id',

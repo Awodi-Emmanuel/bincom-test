@@ -14,9 +14,10 @@ class PollingunitController extends Controller
      */
     public function index()
     {
-        $Allpollinguints = PollingUnit::all();
+        $pollingunits = PollingUnit::all();
 
-        return response()->json($Allpollinguints);
+        return view('pollingunits.display', compact('pollingunits'));
+
     }
 
     /**
@@ -40,8 +41,8 @@ class PollingunitController extends Controller
      */
     public static function getPUByLGAId($lga_id)
     {
-        $pollingUnits = PollingUnit::where('lga_id', $lga_id)->get();
-        return response()->json($pollingUnits);
+        $pollingunits = PollingUnit::where('lga_id', $lga_id)->get();
+        return response()->json($pollingunits);
     }
 
     /**
@@ -70,15 +71,15 @@ class PollingunitController extends Controller
      */
     public static function AllPUResultsByLGAID($lga_id)
     {
-        $lgaPUSum = 0;
-        $pollingUnits = PollingunitController::getPUByLGAId($lga_id);
-        $pollingUnits = $pollingUnits->original;
+        $lgaPUSums = 0;
+        $pollingunits = PollingunitController::getPUByLGAId($lga_id);
+        $pollingunits = $pollingunits->original;
 
-        foreach ($pollingUnits as $pollingUnit) {
+        foreach ($pollingunits as $pollingunit) {
             $pollingUnitSum = PollingunitController::getPUResultByPUUniqueID($pollingUnit->uniqueid);
-            $lgaPUSum += $pollingUnitSum;
+            // declear a new veriabl
+            $lgaPUSums += $pollingUnitSum;
         }
-
-        return $lgaPUSum;
+        return response()->json($lgaPUSums);
     }
 }

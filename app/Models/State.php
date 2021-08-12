@@ -13,4 +13,9 @@ class State extends Model
         'state_id',
         'state_name'
     ];
+
+    public function lgas()
+    {
+        return $this->hasMany('App\Lgas');
+    }
 }

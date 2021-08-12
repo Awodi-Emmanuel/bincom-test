@@ -33,6 +33,18 @@ class LgaController extends Controller
     }
 
     /**
+     * getLGAByStateId
+     *
+     * @return void
+     */
+    public static function getLGAByStateId($state_id)
+    {
+        $states = Lga::where('state_id', $state_id)->get();
+        
+        return view('states.create', comppact('states'));
+    }
+
+    /**
      * getLgaById
      *
      * @param  mixed $id
@@ -57,14 +69,5 @@ class LgaController extends Controller
         return response()->json($wards);
     }
 
-    /**
-     * getLGAByStateId
-     *
-     * @return void
-     */
-    public static function getLGAByStateId($state_id)
-    {
-        $lgas = Lga::where('state_id', $state_id)->get();
-        return response()->json($lgas);
-    }
+
 }

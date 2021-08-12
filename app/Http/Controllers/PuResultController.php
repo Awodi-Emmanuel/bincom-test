@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PuResultStoreRequest;
 use App\Models\AnnouncedPuResult;
 use App\Models\PollingUnit;
 use Illuminate\Http\Request;
@@ -28,38 +27,35 @@ class PuResultController extends Controller
      */
     public function create(Request $request)
     {
-        $ward_id = $request->input('ward_id');
-        $lga_id = $request->input('lgaId');
-        $polling_unit_id = $request->input('polling_unit_id');
-        $uniquewardid = $request->input('uniquewardid');
-        $polling_unit_number = $request->input('polling_unit_number');
-        $polling_unit_name = $request->input('polling_unit_name');
-        $polling_unit_description = $request->input('polling_unit_description');
-        $lat = $request->input('lat');
-        $long = $request->input('long');
-        $entered_by_user = $request->input('entered_by_user');
-        $user_ip_address = $request->ip();
-
-        $foo = array($ward_id, $lga_id, $uniquewardid, $polling_unit_number, $polling_unit_id, $polling_unit_name, $polling_unit_description, $lat, $long, $entered_by_user, $user_ip_address);
-
-        // dd($foo);
-
-        PollingUnit::create($foo);
-
-        return;
+        $newpollingunits = PollingUnit::all();
+        return view('newpollingunits.create', compact('newpollingunits'));
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the form for creating a new resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PuResultStoreRequest $request)
+    public function store(Request $request)
     {
-        $announcedpuresults = AnnouncedPuResult::create($request->validated());
+        $newpollingunits = PollingUnit::create([
+            'ward_id' => $request->ward_id,
+            'lga_id' => $request->lga_id,
+            'polling_unit_id' => $request->polling_unit_id,
+            'uniquewardid' => $request->uniquewardid,
+            'polling_unit_number' => $request->polling_unit_number,
+            'polling_unit_name' => $request->polling_unit_name,
+            'polling_unit_description' => $request->polling_unit_description,
+            'lat' => $request->lat,
+            'long' => $request->long,
+            'entered_by_user' => $request->entered_by_user,
+            'user_ip_address' => $request->ip,
 
-        return redirect()->route('announcedpuresults.create')->with('message', 'Polling Unit Created Successfully');
+        ]);
+        return redirect()->route('newpollingunits.create')->with('message', 'Polling unit Created Successfully');
+
+        //return view('announcedpuresults.index', compact('announcedpuresults'));
+        //return view('newpollingunits.create', compact('newpollingunits'));
     }
 
     /**

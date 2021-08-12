@@ -45,7 +45,7 @@
   <tbody>
     @foreach ($announcedpuresults as $announcedpuresult)
     <tr>
-      <th scope="row">Polling unit results {{ $announcedpuresult->result_id }}</th>
+      <th scope="row">{{ $announcedpuresult->party_abbreviation }} ===> {{ $announcedpuresult->result_id }}</th>
 
 
     </td>

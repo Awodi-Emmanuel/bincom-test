@@ -15,7 +15,7 @@ class CreatePollingUnitTable extends Migration
     {
         Schema::create('polling_unit', function (Blueprint $table) {
             $table->integer('uniqueid', true);
-            $table->integer('polling_unit_id');
+            // $table->integer('polling_unit_id')->nullable();
             $table->integer('ward_id');
             $table->integer('lga_id');
             $table->integer('uniquewardid')->nullable();
@@ -27,6 +27,7 @@ class CreatePollingUnitTable extends Migration
             $table->string('entered_by_user', 50)->nullable();
             $table->dateTime('date_entered')->nullable();
             $table->string('user_ip_address', 50)->nullable();
+            
         });
     }
 

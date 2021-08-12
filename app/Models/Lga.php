@@ -19,4 +19,9 @@ class Lga extends Model
         'date_entered',
         'user_ip_address'
     ];
+
+    public function state(){
+
+        return $this->belongsTo('App\State');
+    }
 }
