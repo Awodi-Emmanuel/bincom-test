@@ -11,7 +11,7 @@
      <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-               <div class="card-header">{{ __('Create new result')}}
+               <div class="card-header">{{ __('View Summed Total Result')}}
                </div>
 
 
@@ -21,7 +21,7 @@
 
                    <option selected>select state</option>
                     @foreach ($pollingunits  as $pollingunit)
-                           <option value="{{ $pollingunit->polling_unit_name }}">
+                           <option value="{{ $pollingunit->polling_unit_name }}" key="">
                            {{ $pollingunit->polling_unit_name}}
                        </option>
                        @endforeach
@@ -45,28 +45,29 @@
 <script type="text/javascript">
     jQuery(document).ready(function ()
     {
-            jQuery('select[name="lga_id"]').on('change',function(){
+            jQuery('#state').on('change',function(){
                var stateID = jQuery(this).val();
-               if(stateID)
-               {
-                  jQuery.ajax({
-                     url : 'pollingunits/result/' +stateID,
-                     type : "GET",
-                     dataType : "json",
-                     success:function(data)
-                     {
-                        console.log(data);
-                        jQuery('select[name="party_score"]').empty();
-                        jQuery.each(data, function(key,value){
-                           $('select[name="party_score"]').append('<option value="'+ key +'">'+ value +'</option>');
-                        });
-                     }
-                  });
-               }
-               else
-               {
-                  $('select[name="party_score"]').empty();
-               }
+               alert(stateID);
+            //    if(stateID)
+            //    {
+            //       jQuery.ajax({
+            //          url : 'pollingunits/result/' +stateID,
+            //          type : "GET",
+            //          dataType : "json",
+            //          success:function(data)
+            //          {
+            //             console.log(data);
+            //             jQuery('select[name="party_score"]').empty();
+            //             jQuery.each(data, function(key,value){
+            //                $('select[name="party_score"]').append('<option value="'+ key +'">'+ value +'</option>');
+            //             });
+            //          }
+            //       });
+            //    }
+            //    else
+            //    {
+            //       $('select[name="party_score"]').empty();
+            //    }
             });
     });
     </script>

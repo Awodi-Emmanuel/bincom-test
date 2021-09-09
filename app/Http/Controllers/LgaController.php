@@ -14,9 +14,12 @@ class LgaController extends Controller
      */
     public function index()
     {
-        $lga = Lga::all();
+        $lgas = Lga::all();
 
         return response()->json($lga);
+
+
+        //  return view('pollingunits.display', compact('lgas'));
     }
 
     /**
@@ -40,7 +43,7 @@ class LgaController extends Controller
     public static function getLGAByStateId($state_id)
     {
         $states = Lga::where('state_id', $state_id)->get();
-        
+
         return view('states.create', comppact('states'));
     }
 

@@ -17,6 +17,7 @@ class PollingunitController extends Controller
         $pollingunits = PollingUnit::all();
 
         return view('pollingunits.display', compact('pollingunits'));
+        // return response()->json('pollingunits');
 
     }
 
@@ -81,5 +82,7 @@ class PollingunitController extends Controller
             $lgaPUSums += $pollingUnitSum;
         }
         return response()->json($lgaPUSums);
+        // return view('pollingunits.display', compact('pollingunits'));
+
     }
 }
