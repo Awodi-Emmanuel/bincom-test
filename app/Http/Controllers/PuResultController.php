@@ -17,8 +17,22 @@ class PuResultController extends Controller
     {
         $announcedpuresults = AnnouncedPuResult::all();
 
-        return view('announcedpuresults.index', compact('announcedpuresults'));
+        // return response()->json($announcedpuresults);
+       return view('announcedpuresults.index', compact('announcedpuresults'));
     }
+
+    // public function StoreNewResult(Request $request){
+    //     $announcedpuresults = AnnouncedPuResult::create([
+    //         'result_id' => $request->result_id,
+    //         'polling_unit_uniqueid' => $request->polling_unit_uniqueid,
+    //         'party_abbreviation' => $request->party_abbreviation,
+    //         'party_score' => $request->party_score,
+    //         'entered_by_user' => $request->entered_by_user,
+    //         'user_ip_address' => $request->user_ip_address
+
+    //     ]);
+
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +42,10 @@ class PuResultController extends Controller
     public function create(Request $request)
     {
         $newpollingunits = PollingUnit::all();
-        return view('newpollingunits.create', compact('newpollingunits'));
+
+        return response()->json($newpollingunits);
+
+        // return view('newpollingunits.create', compact('newpollingunits'));
     }
 
     /**

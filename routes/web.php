@@ -47,6 +47,7 @@ Route::resource('/lga/result', LgaResultController::class);
 Route::resource('newpollingunits', PuResultController::class);
 Route::get('newpollingunits', [PuResultController::class, 'store']);
 Route::get('announcedpuresults/{id}', [PuResultController::class, 'show']);
+// Route::post('announcedpuresults', PuResultController::class, 'StoreNewResult');
 Route::resource('announcedpuresults', PuResultController::class);
 
 // State Routes

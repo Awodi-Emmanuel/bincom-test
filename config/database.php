@@ -2,6 +2,16 @@
 
 use Illuminate\Support\Str;
 
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+$host = $url["us-cdbr-east-04.cleardb.com"];
+$username = $url["ba1441ee731a5a"];
+$password = $url["b4715c46"];
+$database = substr($url["path"], 1);
+
+
+
+
 return [
 
     /*
@@ -32,6 +42,7 @@ return [
     | choice installed on your machine before you begin development.
     |
     */
+
 
     'connections' => [
 
@@ -143,5 +154,6 @@ return [
         ],
 
     ],
+
 
 ];

@@ -77,9 +77,9 @@ class PollingunitController extends Controller
         $pollingunits = $pollingunits->original;
 
         foreach ($pollingunits as $pollingunit) {
-            $pollingUnitSum = PollingunitController::getPUResultByPUUniqueID($pollingUnit->uniqueid);
+            $pollingunitSum = PollingunitController::getPUResultByPUUniqueID($pollingUnit->uniqueid);
             // declear a new veriabl
-            $lgaPUSums += $pollingUnitSum;
+            $lgaPUSums += $pollingunitSum;
         }
         return response()->json($lgaPUSums);
         // return view('pollingunits.display', compact('pollingunits'));
