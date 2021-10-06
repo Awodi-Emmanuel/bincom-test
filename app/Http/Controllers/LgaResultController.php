@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\AnnouncedLgaResult;
 
+use App\Models\AnnouncedLgaResult;
 use Illuminate\Http\Request;
 
 class LgaResultController extends Controller
@@ -24,9 +24,9 @@ class LgaResultController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
     }
 
     /**
@@ -35,9 +35,21 @@ class LgaResultController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function storeResult(Request $request)
     {
-        //
+        $announcedlgaresults = AnnouncedLgaResult::create([
+            // 'result_id' => $request->result_id,
+            'lga_name' => $request->lga_name,
+            // 'polling_unit_uniqueid' => $request->polling_unit_uniqueid,
+            'party_abbreviation' => $request->party_abbreviation,
+            'party_score' => $request->party_score,
+            'entered_by_user' => $request->entered_by_user,
+            'date_entered' => $request->date_entered,
+            'user_ip_address' => $request->user_ip_address
+
+        ]);
+        return redirect()->route('announcedlgaresults.create')->with('message', 'Polling unit Created Successfully');
+        // return response()->json($announcedLgaResults);
     }
 
     /**
@@ -49,7 +61,7 @@ class LgaResultController extends Controller
     public function show($id)
     {
         $result_count = AnnouncedLgaResult::where('result_id', $id)->sum('lga_score');
-        
+
         var_dump($result_count);
     }
 

@@ -69,9 +69,9 @@ class PuResultController extends Controller
             'user_ip_address' => $request->ip,
 
         ]);
-        return redirect()->route('newpollingunits.create')->with('message', 'Polling unit Created Successfully');
+        // return redirect()->route('newpollingunits.create')->with('message', 'Polling unit Created Successfully');
 
-        //return view('announcedpuresults.index', compact('announcedpuresults'));
+        return view('announcedpuresults.index', compact('announcedpuresults'));
         //return view('newpollingunits.create', compact('newpollingunits'));
     }
 

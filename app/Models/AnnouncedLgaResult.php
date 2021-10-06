@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class AnnouncedLgaResult extends Model
 {
+    public $timestamps = false;
+
     use HasFactory;
 
     protected $fillable = [
-        'result_id',
+        // 'result_id',
         'lga_name',
         'party_abbreviation',
         'party_score',

@@ -35,17 +35,23 @@ Route::resource('/lga', LgaController::class);
 Route::get('pollingunits/lga/{id}', [PollingunitController::class, 'getPUByLGAId']);
 Route::get('pollingunits/result/{id}', [PollingunitController::class, 'AllPUResultsByLGAID'])->name('pollingunits');
 
-Route::post('pollingunits', [PollingunitController::class, 'store']);
+Route::post('/pollingunits', [PollingunitController::class, 'store']);
 Route::get('pollingunits/{id}', [PollingunitController::class, 'show']);
 Route::resource('pollingunits', PollingunitController::class);
 
 Route::resource('/party', PartyController::class);
 Route::resource('/agent', AgentController::class);
+Route::post('announcedlgaresults', [LgaResultController::class, 'store']);
+Route::get('announcedlgaresults', [LgaResultController::class, 'index']);
 Route::resource('/lga/result', LgaResultController::class);
 
+
+
+
+
 // Party Result Route for  and retreving
-Route::resource('newpollingunits', PuResultController::class);
-Route::get('newpollingunits', [PuResultController::class, 'store']);
+// Route::resource('newpollingunits', PuResultController::class);
+// Route::get('newpollingunits', [PuResultController::class, 'store']);
 Route::get('announcedpuresults/{id}', [PuResultController::class, 'show']);
 // Route::post('announcedpuresults', PuResultController::class, 'StoreNewResult');
 Route::resource('announcedpuresults', PuResultController::class);

@@ -2,12 +2,12 @@
 
 use Illuminate\Support\Str;
 
-$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+// $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
-$host = $url["us-cdbr-east-04.cleardb.com"];
-$username = $url["ba1441ee731a5a"];
-$password = $url["b4715c46"];
-$database = substr($url["path"], 1);
+// $host = $url["us-cdbr-east-04.cleardb.com"];
+// $username = $url["ba1441ee731a5a"];
+// $password = $url["b4715c46"];
+// $database = substr($url["path"], 1);
 
 
 

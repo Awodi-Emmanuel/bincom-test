@@ -81,7 +81,7 @@
             <hr class="sidebar-divider">
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('newpollingunits.create') }}" data-toggle="collapse" data-target="#collapseUser"
+                <a class="nav-link collapsed" href="/announcedlgaresults.create" data-toggle="collapse" data-target="#collapseUser"
                     aria-expanded="true" aria-controls="collapseUser">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Store Results</span>
